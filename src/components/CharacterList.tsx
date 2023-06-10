@@ -33,10 +33,9 @@ export interface Character {
 
 interface Characters {
   characters: Character[];
-  onClick(id: number): void;
 }
 
-const CharacterList = ({ characters, onClick }: Characters) => {
+const CharacterList = ({ characters }: Characters) => {
   const navigate = useNavigate();
   const navigateToProfile = (id: number) => {
     navigate({

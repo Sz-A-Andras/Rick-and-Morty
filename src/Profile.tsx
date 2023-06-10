@@ -1,7 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { Character } from "./components/CharacterList";
+import { List, ListItem } from "@chakra-ui/react";
+import { useSearchParams } from "react-router-dom";
 
 const Profile = () => {
-  return <h1>HEloszia</h1>;
+  const [character, setCharacter] = useState<Character>();
+  const [searchParams] = useSearchParams();
+  const characterId = searchParams.get("id");
+  useEffect(() => {
+    axios
+      .get("https://rickandmortyapi.com/api/character/" + characterId)
+      .then((res) => setCharacter(res.data));
+  }, []);
+  return (
+    <List>
+      <ListItem key={character?.id}>{character?.image}</ListItem>
+      <ListItem key={character?.id}>{character?.id}</ListItem>
+      <ListItem key={character?.id}>{character?.name}</ListItem>
+      <ListItem key={character?.id}>{character?.species}</ListItem>
+      <ListItem key={character?.id}>{character?.status}</ListItem>
+      <ListItem key={character?.id}>{character?.type}</ListItem>
+      <ListItem key={character?.id}>{character?.gender}</ListItem>
+    </List>
+  );
 };
 
 export default Profile;

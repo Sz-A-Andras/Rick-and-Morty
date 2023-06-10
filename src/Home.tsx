@@ -3,16 +3,18 @@ import CharacterList from "./components/CharacterList";
 import axios from "axios";
 import { Character } from "./components/CharacterList";
 import NavBar from "./components/NavBar";
-import { Grid, GridItem } from "@chakra-ui/react";
-import { Routes, Route, useNavigate, Router } from "react-router-dom";
+import { Grid, GridItem, Link } from "@chakra-ui/react";
+import {
+  Routes,
+  Route,
+  useNavigate,
+  Router,
+  createSearchParams,
+} from "react-router-dom";
 import Profile from "./Profile";
 
-const App = () => {
+const Home = () => {
   const [characters, setCharacters] = useState<Character[]>([]);
-  const navigate = useNavigate();
-  const navigateToProfile = () => {
-    navigate("./Profile");
-  };
 
   useEffect(() => {
     axios
@@ -26,10 +28,10 @@ const App = () => {
         <NavBar></NavBar>
       </GridItem>
       <GridItem area="main">
-        <CharacterList characters={characters} onClick={navigateToProfile} />;
+        <CharacterList characters={characters} />;
       </GridItem>
     </Grid>
   );
 };
 
-export default App;
+export default Home;
