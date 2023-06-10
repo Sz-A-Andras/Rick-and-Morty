@@ -3,6 +3,7 @@ import axios from "axios";
 import { Character } from "./components/CharacterList";
 import { List, ListItem } from "@chakra-ui/react";
 import { useSearchParams } from "react-router-dom";
+import { Image } from "@chakra-ui/react";
 
 const Profile = () => {
   const [character, setCharacter] = useState<Character>();
@@ -15,7 +16,9 @@ const Profile = () => {
   }, []);
   return (
     <List>
-      <ListItem key={character?.id}>{character?.image}</ListItem>
+      <ListItem key={character?.id}>
+        <Image src={character?.image}></Image>
+      </ListItem>
       <ListItem key={character?.id}>{character?.id}</ListItem>
       <ListItem key={character?.id}>{character?.name}</ListItem>
       <ListItem key={character?.id}>{character?.species}</ListItem>
