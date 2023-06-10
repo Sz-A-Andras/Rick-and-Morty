@@ -22,7 +22,7 @@ export interface Character {
   gender: string;
 }
 
-interface Characters {
+export interface Characters {
   characters: Character[];
 }
 
