@@ -1,8 +1,22 @@
 import React from "react";
 import { Button, ButtonGroup } from "@chakra-ui/react";
+import {
+  Image,
+  Box,
+  Table,
+  Thead,
+  Tbody,
+  Tfoot,
+  Tr,
+  Th,
+  Td,
+  TableCaption,
+  TableContainer,
+} from "@chakra-ui/react";
 
-interface Character {
+export interface Character {
   id: number;
+  image: string;
   name: string;
   species: string;
   status: string;
@@ -14,32 +28,38 @@ interface Characters {
 
 const CharacterList = ({ characters }: Characters) => {
   return (
-    <table className="table table-border">
-      <thead>
-        <tr>
-          <th>Avatar</th>
-          <th>Name</th>
-          <th>Species</th>
-          <th>Status</th>
-          <th>Info</th>
-        </tr>
-      </thead>
-      <tbody>
-        {characters.map((c) => (
-          <tr key={c.id}>
-            <td></td>
-            <td>{c.name}</td>
-            <td>{c.species}</td>
-            <td>{c.status}</td>
-            <td>
-              <Button colorScheme="teal" size="md">
-                Button
-              </Button>
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+    <Box mx="200px" my="50px" textAlign="center">
+      <TableContainer>
+        <Table className="table table-border" size="md">
+          <Thead>
+            <Tr>
+              <Td>Avatar</Td>
+              <Td>Name</Td>
+              <Td>Species</Td>
+              <Td>Status</Td>
+              <Td>Info</Td>
+            </Tr>
+          </Thead>
+          <Tbody>
+            {characters.map((c) => (
+              <Tr key={c.id}>
+                <Td>
+                  <Image src={c.image}></Image>
+                </Td>
+                <Td>{c.name}</Td>
+                <Td>{c.species}</Td>
+                <Td>{c.status}</Td>
+                <Td>
+                  <Button colorScheme="teal" size="md">
+                    View
+                  </Button>
+                </Td>
+              </Tr>
+            ))}
+          </Tbody>
+        </Table>
+      </TableContainer>
+    </Box>
   );
 };
 
