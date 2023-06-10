@@ -1,4 +1,5 @@
 import React from "react";
+import { Button, ButtonGroup } from "@chakra-ui/react";
 
 interface Character {
   id: number;
@@ -31,7 +32,9 @@ const CharacterList = ({ characters }: Characters) => {
             <td>{c.species}</td>
             <td>{c.status}</td>
             <td>
-              <button className="btn btn-outline-danger">View</button>
+              <Button colorScheme="teal" size="md">
+                Button
+              </Button>
             </td>
           </tr>
         ))}
