@@ -1,5 +1,7 @@
 import React from "react";
 import { Button, ButtonGroup } from "@chakra-ui/react";
+import { Routes, Route, useNavigate } from "react-router-dom";
+
 import {
   Image,
   Box,
@@ -24,9 +26,14 @@ export interface Character {
 
 interface Characters {
   characters: Character[];
+  onClick: () => void;
 }
 
-const CharacterList = ({ characters }: Characters) => {
+const CharacterList = ({ characters, onClick }: Characters) => {
+  //const navigate = useNavigate();
+  //const navigateToProfile = () => {
+  //navigate("../Profile");
+  //};
   return (
     <Box mx="200px" my="50px" textAlign="center">
       <TableContainer>
@@ -50,7 +57,7 @@ const CharacterList = ({ characters }: Characters) => {
                 <Td>{c.species}</Td>
                 <Td>{c.status}</Td>
                 <Td>
-                  <Button colorScheme="teal" size="md">
+                  <Button colorScheme="teal" size="md" onClick={onClick}>
                     View
                   </Button>
                 </Td>
