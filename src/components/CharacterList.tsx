@@ -1,11 +1,5 @@
-import React from "react";
-import { Button, ButtonGroup } from "@chakra-ui/react";
-import {
-  Routes,
-  Route,
-  useNavigate,
-  createSearchParams,
-} from "react-router-dom";
+import { Button } from "@chakra-ui/react";
+import { useNavigate, createSearchParams } from "react-router-dom";
 
 import {
   Image,
@@ -13,11 +7,8 @@ import {
   Table,
   Thead,
   Tbody,
-  Tfoot,
   Tr,
-  Th,
   Td,
-  TableCaption,
   TableContainer,
 } from "@chakra-ui/react";
 
