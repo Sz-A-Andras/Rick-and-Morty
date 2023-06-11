@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Character } from "./components/CharacterList";
-import { Box, Button, List, ListItem, SimpleGrid } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Center,
+  List,
+  ListItem,
+  SimpleGrid,
+} from "@chakra-ui/react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { Image } from "@chakra-ui/react";
-import CharacterCard from "./components/CharacterCard";
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -20,24 +26,34 @@ const Profile = () => {
       .then((res) => setCharacter(res.data));
   }, []);
   return (
-    <Box mx="200px" my="50px" textAlign="center">
-      <List>
-        <ListItem key={character?.id} textAlign="center">
-          <Image src={character?.image}></Image>
-        </ListItem>
-        <ListItem key={character?.id}>{character?.id}</ListItem>
-        <ListItem key={character?.id}>{character?.name}</ListItem>
-        <ListItem key={character?.id}>{character?.species}</ListItem>
-        <ListItem key={character?.id}>{character?.status}</ListItem>
-        <ListItem key={character?.id}>{character?.type}</ListItem>
-        <ListItem key={character?.id}>{character?.gender}</ListItem>
-        <ListItem>
-          <Button colorScheme="teal" size="md" onClick={navigateToHome}>
-            Back
-          </Button>
-        </ListItem>
-      </List>
-    </Box>
+    <>
+      <Center>
+        <Box mx="200px" my="50px" textAlign="center">
+          <List>
+            <ListItem key={character?.id} textAlign="center">
+              <Image src={character?.image}></Image>
+            </ListItem>
+            <ListItem>Id: {character?.id}</ListItem>
+            <ListItem>Name: {character?.name}</ListItem>
+            <ListItem>Species: {character?.species}</ListItem>
+            <ListItem>Status: {character?.status}</ListItem>
+            <ListItem>
+              Type: {character?.type === "" ? "Unknown" : character?.type}
+            </ListItem>
+            <ListItem>Gender: {character?.gender}</ListItem>
+            <ListItem>Origin name: {character?.origin.name}</ListItem>
+            <ListItem>
+              Current location name: {character?.location.name}
+            </ListItem>
+            <ListItem>
+              <Button colorScheme="teal" size="md" onClick={navigateToHome}>
+                Back
+              </Button>
+            </ListItem>
+          </List>
+        </Box>
+      </Center>
+    </>
   );
 };
 

@@ -20,6 +20,8 @@ export interface Character {
   status: string;
   type: string;
   gender: string;
+  origin: { name: string };
+  location: { name: string };
 }
 
 export interface Characters {
