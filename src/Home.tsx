@@ -6,8 +6,8 @@ import NavBar from "./components/NavBar";
 import { Grid, GridItem } from "@chakra-ui/react";
 import CharacterFilterBySpecies from "./components/CharacterFilterBySpecies";
 import CharacterFilterByName from "./components/CharacterFilterByName";
-import Paginate from "./components/Paginate";
 import Paginate2 from "./components/Paginate2";
+import Paginate3 from "./components/Paginate3";
 
 const Home = () => {
   const [characters, setCharacters] = useState<Character[]>([]);
@@ -41,7 +41,8 @@ const Home = () => {
   }
 
   const paginate = (number: number) => {
-    setCurrentPage(number);
+    //setCurrentPage(number);
+    setPageNumber(number);
   };
 
   useEffect(() => {
@@ -79,6 +80,11 @@ const Home = () => {
             paginatePrev={() => setPageNumber(pagenumber - 1)}
             paginateNext={() => setPageNumber(pagenumber + 1)}
             number={pagenumber + "/" + pagecount}
+          />
+          <Paginate3
+            pgnumber={pagecount}
+            paginate={paginate}
+            currentPageNumber={pagenumber}
           />
           <CharacterList characters={visible} />;
         </GridItem>
