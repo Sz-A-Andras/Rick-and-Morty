@@ -1,5 +1,4 @@
 import { Box, Select } from "@chakra-ui/react";
-import React from "react";
 
 interface Props {
   onSelectCharacter: (species: string) => void;
