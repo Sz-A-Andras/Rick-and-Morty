@@ -12,12 +12,21 @@ import {
   createSearchParams,
 } from "react-router-dom";
 import Profile from "./Profile";
-import CharacterFilter from "./components/CharacterFilter";
+import CharacterFilter from "./components/CharacterFilterBySpecies";
+import CharacterFilterBySpecies from "./components/CharacterFilterBySpecies";
+import CharacterFilterByName from "./components/CharacterFilterByName";
 
 const Home = () => {
   const [characters, setCharacters] = useState<Character[]>([]);
 
-  const [selectedCharacter, setSelectedCharacter] = useState("");
+  const [selectedCharacterBySpecies, setselectedCharacterBySpecies] =
+    useState("");
+
+  const [selectedCharacterByName, setselectedCharacterByName] = useState("");
+
+  const visibleByName = selectedCharacterByName
+    ? characters.filter((c) => c.name.includes(selectedCharacterByName))
+    : characters;
 
   useEffect(() => {
     axios
@@ -25,8 +34,8 @@ const Home = () => {
       .then((res) => setCharacters(res.data.results));
   }, []);
 
-  const visibleCharacters = selectedCharacter
-    ? characters.filter((c) => c.species === selectedCharacter)
+  const visibleCharactersBySpecies = selectedCharacterBySpecies
+    ? characters.filter((c) => c.species === selectedCharacterBySpecies)
     : characters;
 
   return (
@@ -36,11 +45,14 @@ const Home = () => {
       </GridItem>
       <GridItem area="main">
         <div className="mb-3">
-          <CharacterFilter
-            onSelectCharacter={(char) => setSelectedCharacter(char)}
-          ></CharacterFilter>
+          <CharacterFilterBySpecies
+            onSelectCharacter={(char) => setselectedCharacterBySpecies(char)}
+          ></CharacterFilterBySpecies>
+          <CharacterFilterByName
+            onSelectCharacterName={(char) => setselectedCharacterByName(char)}
+          ></CharacterFilterByName>
         </div>
-        <CharacterList characters={visibleCharacters} />;
+        <CharacterList characters={visibleByName} />;
       </GridItem>
     </Grid>
   );

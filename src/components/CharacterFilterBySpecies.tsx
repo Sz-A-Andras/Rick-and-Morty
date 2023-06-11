@@ -5,7 +5,7 @@ interface Props {
   onSelectCharacter: (species: string) => void;
 }
 
-const CharacterFilter = ({ onSelectCharacter }: Props) => {
+const CharacterFilterBySpecies = ({ onSelectCharacter }: Props) => {
   return (
     <Box mx="200px" my="50px" textAlign="center">
       <Select
@@ -20,4 +20,4 @@ const CharacterFilter = ({ onSelectCharacter }: Props) => {
   );
 };
 
-export default CharacterFilter;
+export default CharacterFilterBySpecies;
