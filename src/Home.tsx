@@ -13,6 +13,7 @@ const Home = () => {
   const [characters, setCharacters] = useState<Character[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [rowsPerParge] = useState(20);
+  const [pagecount, setPageCount] = useState(1);
 
   const indexOfLastRow = currentPage * rowsPerParge;
   const indexOfirstRow = indexOfLastRow - rowsPerParge;
@@ -53,6 +54,12 @@ const Home = () => {
 
   useEffect(() => {
     axios
+      .get("https://rickandmortyapi.com/api/character")
+      .then((res) => setPageCount(parseInt(res.data.info.pages)));
+  }, []);
+
+  useEffect(() => {
+    axios
       .get("https://rickandmortyapi.com/api/character?page=" + pagenumber)
       .then((res) => setCharacters(res.data.results));
   }, [pagenumber]);
@@ -75,11 +82,7 @@ const Home = () => {
         <Paginate2
           paginatePrev={() => setPageNumber(pagenumber - 1)}
           paginateNext={() => setPageNumber(pagenumber + 1)}
-        />
-        <Paginate
-          rowsPerPage={rowsPerParge}
-          totalRows={characters.length}
-          paginate={paginate}
+          number={pagenumber}
         />
       </GridItem>
     </Grid>
