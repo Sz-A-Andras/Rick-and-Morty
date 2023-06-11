@@ -73,7 +73,7 @@ const Home = () => {
         <Paginate2
           paginatePrev={() => setPageNumber(pagenumber - 1)}
           paginateNext={() => setPageNumber(pagenumber + 1)}
-          number={pagenumber}
+          number={pagenumber + "/" + pagecount}
         />
         <CharacterList characters={visible} />;
       </GridItem>

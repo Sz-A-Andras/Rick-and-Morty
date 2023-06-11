@@ -3,7 +3,7 @@ import { Box, Button, Center, HStack } from "@chakra-ui/react";
 interface Props {
   paginatePrev: () => void;
   paginateNext: () => void;
-  number: number;
+  number: string;
 }
 
 const Paginate = ({ paginatePrev, paginateNext, number }: Props) => {

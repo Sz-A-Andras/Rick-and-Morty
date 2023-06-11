@@ -6,12 +6,17 @@ interface Props {
 }
 const CharacterFilterByName = ({ onSelectCharacterName }: Props) => {
   return (
-    <Box mx="200px" my="50px" textAlign="center">
-      <Input
-        type="text"
-        onChange={(event) => onSelectCharacterName(event.target.value)}
-      ></Input>
-    </Box>
+    <>
+      <Box mx="200px" my="50px">
+        <text>Filter by name:</text>
+      </Box>
+      <Box mx="200px" my="50px" textAlign="center">
+        <Input
+          type="text"
+          onChange={(event) => onSelectCharacterName(event.target.value)}
+        ></Input>
+      </Box>
+    </>
   );
 };
 
