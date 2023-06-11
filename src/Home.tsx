@@ -24,9 +24,14 @@ const Home = () => {
 
   const [selectedCharacterByName, setselectedCharacterByName] = useState("");
 
-  const visibleByName = selectedCharacterByName
-    ? characters.filter((c) => c.name.includes(selectedCharacterByName))
-    : characters;
+  const visibleByName =
+    selectedCharacterByName || selectedCharacterBySpecies
+      ? characters.filter(
+          (c) =>
+            c.name.includes(selectedCharacterByName) &&
+            c.species === selectedCharacterBySpecies
+        )
+      : characters;
 
   useEffect(() => {
     axios
