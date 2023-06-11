@@ -26,7 +26,7 @@ const CharProfile = ({ char, navigate }: Props) => {
             <ListItem>Origin: {char?.origin.name}</ListItem>
             <ListItem>Current location: {char?.location.name}</ListItem>
             <ListItem>
-              <Button colorScheme="teal" size="md" onClick={navigate}>
+              <Button colorScheme="teal" size="md" onClick={navigate} my="10px">
                 Back
               </Button>
             </ListItem>

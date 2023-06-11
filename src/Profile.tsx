@@ -3,6 +3,7 @@ import apiClient from "./services/api-client";
 import { Character } from "./components/CharacterList";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import CharProfile from "./components/CharProfile";
+import NavBar from "./components/NavBar";
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -21,7 +22,10 @@ const Profile = () => {
     document.title = "Profile";
   });
   return (
-    <CharProfile char={character as Character} navigate={navigateToHome} />
+    <>
+      <NavBar></NavBar>
+      <CharProfile char={character as Character} navigate={navigateToHome} />
+    </>
   );
 };
 

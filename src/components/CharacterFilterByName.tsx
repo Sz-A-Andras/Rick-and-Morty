@@ -1,4 +1,4 @@
-import { Box, Input, Select } from "@chakra-ui/react";
+import { Box, Input, Text } from "@chakra-ui/react";
 import React from "react";
 
 interface Props {
@@ -8,7 +8,7 @@ const CharacterFilterByName = ({ onSelectCharacterName }: Props) => {
   return (
     <>
       <Box mx="200px" my="50px">
-        <text>Filter by name:</text>
+        <Text>Filter by name:</Text>
       </Box>
       <Box mx="200px" my="50px" textAlign="center">
         <Input

@@ -1,5 +1,4 @@
 import { Box, Button, Center, HStack } from "@chakra-ui/react";
-import React from "react";
 
 interface Props {
   pgnumber: number;
