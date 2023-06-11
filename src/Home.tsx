@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import CharacterList from "./components/CharacterList";
-import axios from "axios";
+import apiClient from "./services/api-client";
 import { Character } from "./components/CharacterList";
 import NavBar from "./components/NavBar";
 import { Grid, GridItem } from "@chakra-ui/react";
@@ -45,14 +45,14 @@ const Home = () => {
   };
 
   useEffect(() => {
-    axios
-      .get("https://rickandmortyapi.com/api/character")
+    apiClient
+      .get("/character")
       .then((res) => setPageCount(parseInt(res.data.info.pages)));
   }, []);
 
   useEffect(() => {
-    axios
-      .get("https://rickandmortyapi.com/api/character?page=" + pagenumber)
+    apiClient
+      .get("/character?page=" + pagenumber)
       .then((res) => setCharacters(res.data.results));
   }, [pagenumber]);
 

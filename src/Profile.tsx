@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import apiClient from "./services/api-client";
 import { Character } from "./components/CharacterList";
 import {
   Box,
@@ -21,8 +21,8 @@ const Profile = () => {
   const [searchParams] = useSearchParams();
   const characterId = searchParams.get("id");
   useEffect(() => {
-    axios
-      .get("https://rickandmortyapi.com/api/character/" + characterId)
+    apiClient
+      .get("/character/" + characterId)
       .then((res) => setCharacter(res.data));
   }, []);
   return (
