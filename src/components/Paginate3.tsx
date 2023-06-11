@@ -13,10 +13,24 @@ const Paginate3 = ({ pgnumber, paginate, currentPageNumber }: Props) => {
     pagenumbers.push(i);
   }
   const teritory = [];
-  teritory[0] = currentPageNumber - 2;
-  teritory[1] = currentPageNumber - 1;
-  teritory[2] = currentPageNumber + 1;
-  teritory[3] = currentPageNumber + 2;
+
+  if (currentPageNumber >= 3 && currentPageNumber <= 40) {
+    teritory[0] = currentPageNumber - 2;
+    teritory[1] = currentPageNumber - 1;
+    teritory[2] = currentPageNumber + 1;
+    teritory[3] = currentPageNumber + 2;
+  } else if ((currentPageNumber = 2)) {
+    teritory[1] = currentPageNumber - 1;
+    teritory[2] = currentPageNumber + 1;
+    teritory[3] = currentPageNumber + 2;
+  } else if ((currentPageNumber = 1)) {
+    teritory[0] = currentPageNumber + 1;
+    teritory[1] = currentPageNumber + 2;
+  } else {
+    teritory[2] = currentPageNumber + 1;
+    teritory[3] = currentPageNumber + 2;
+  }
+
   return (
     <Center>
       <Box mx="200px" my="10px" textAlign="center">

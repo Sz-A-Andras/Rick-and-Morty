@@ -11,7 +11,7 @@ const Paginate = ({ paginatePrev, paginateNext, number }: Props) => {
     <Center>
       <Box mx="200px" my="10px" textAlign="center">
         <HStack spacing="20px">
-          <Button onClick={paginatePrev}>Previos</Button>
+          <Button onClick={paginatePrev}>Previous</Button>
           <Button w="40px" h="40px" bg="teal" textColor="white">
             {number}
           </Button>
