@@ -24,6 +24,22 @@ const Home = () => {
 
   const [selectedCharacterByName, setselectedCharacterByName] = useState("");
 
+  let visible = characters;
+
+  if (selectedCharacterBySpecies !== "") {
+    visible = characters.filter(
+      (c) =>
+        c.name.includes(selectedCharacterByName) &&
+        c.species === selectedCharacterBySpecies
+    );
+    console.log(selectedCharacterBySpecies);
+  } else if (selectedCharacterBySpecies === null) {
+    visible = characters;
+  } else {
+    visible = characters.filter((c) =>
+      c.name.includes(selectedCharacterByName)
+    );
+  }
   const visibleByName =
     selectedCharacterByName || selectedCharacterBySpecies
       ? characters.filter(
@@ -57,7 +73,7 @@ const Home = () => {
             onSelectCharacterName={(char) => setselectedCharacterByName(char)}
           ></CharacterFilterByName>
         </div>
-        <CharacterList characters={visibleByName} />;
+        <CharacterList characters={visible} />;
       </GridItem>
     </Grid>
   );
