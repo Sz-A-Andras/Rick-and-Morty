@@ -12,9 +12,12 @@ import {
   createSearchParams,
 } from "react-router-dom";
 import Profile from "./Profile";
+import CharacterFilter from "./components/CharacterFilter";
 
 const Home = () => {
   const [characters, setCharacters] = useState<Character[]>([]);
+
+  const [selectedCharacter, setSelectedCharacter] = useState("");
 
   useEffect(() => {
     axios
@@ -22,13 +25,22 @@ const Home = () => {
       .then((res) => setCharacters(res.data.results));
   }, []);
 
+  const visibleCharacters = selectedCharacter
+    ? characters.filter((c) => c.species === selectedCharacter)
+    : characters;
+
   return (
     <Grid templateAreas={`"nav" " main"`}>
       <GridItem area="nav">
         <NavBar></NavBar>
       </GridItem>
       <GridItem area="main">
-        <CharacterList characters={characters} />;
+        <div className="mb-3">
+          <CharacterFilter
+            onSelectCharacter={(char) => setSelectedCharacter(char)}
+          ></CharacterFilter>
+        </div>
+        <CharacterList characters={visibleCharacters} />;
       </GridItem>
     </Grid>
   );
