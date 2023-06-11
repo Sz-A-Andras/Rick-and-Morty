@@ -41,10 +41,8 @@ const Profile = () => {
               Type: {character?.type === "" ? "Unknown" : character?.type}
             </ListItem>
             <ListItem>Gender: {character?.gender}</ListItem>
-            <ListItem>Origin name: {character?.origin.name}</ListItem>
-            <ListItem>
-              Current location name: {character?.location.name}
-            </ListItem>
+            <ListItem>Origin: {character?.origin.name}</ListItem>
+            <ListItem>Current location: {character?.location.name}</ListItem>
             <ListItem>
               <Button colorScheme="teal" size="md" onClick={navigateToHome}>
                 Back

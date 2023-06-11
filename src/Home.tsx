@@ -43,14 +43,6 @@ const Home = () => {
   const paginate = (number: number) => {
     setCurrentPage(number);
   };
-  const prevpg = () => {
-    pagenumber--;
-    console.log(pagenumber);
-  };
-  const nextpg = () => {
-    pagenumber++;
-    console.log(pagenumber);
-  };
 
   useEffect(() => {
     axios
@@ -78,12 +70,12 @@ const Home = () => {
             onSelectCharacterName={(char) => setselectedCharacterByName(char)}
           ></CharacterFilterByName>
         </div>
-        <CharacterList characters={visible} />;
         <Paginate2
           paginatePrev={() => setPageNumber(pagenumber - 1)}
           paginateNext={() => setPageNumber(pagenumber + 1)}
           number={pagenumber}
         />
+        <CharacterList characters={visible} />;
       </GridItem>
     </Grid>
   );
