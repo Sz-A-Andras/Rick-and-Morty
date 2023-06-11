@@ -56,28 +56,34 @@ const Home = () => {
       .then((res) => setCharacters(res.data.results));
   }, [pagenumber]);
 
+  useEffect(() => {
+    document.title = "Home";
+  }, []);
+
   return (
-    <Grid templateAreas={`"nav" " main"`}>
-      <GridItem area="nav">
-        <NavBar></NavBar>
-      </GridItem>
-      <GridItem area="main">
-        <div className="mb-3">
-          <CharacterFilterBySpecies
-            onSelectCharacter={(char) => setselectedCharacterBySpecies(char)}
-          ></CharacterFilterBySpecies>
-          <CharacterFilterByName
-            onSelectCharacterName={(char) => setselectedCharacterByName(char)}
-          ></CharacterFilterByName>
-        </div>
-        <Paginate2
-          paginatePrev={() => setPageNumber(pagenumber - 1)}
-          paginateNext={() => setPageNumber(pagenumber + 1)}
-          number={pagenumber + "/" + pagecount}
-        />
-        <CharacterList characters={visible} />;
-      </GridItem>
-    </Grid>
+    <>
+      <Grid templateAreas={`"nav" " main"`}>
+        <GridItem area="nav">
+          <NavBar></NavBar>
+        </GridItem>
+        <GridItem area="main">
+          <div className="mb-3">
+            <CharacterFilterBySpecies
+              onSelectCharacter={(char) => setselectedCharacterBySpecies(char)}
+            ></CharacterFilterBySpecies>
+            <CharacterFilterByName
+              onSelectCharacterName={(char) => setselectedCharacterByName(char)}
+            ></CharacterFilterByName>
+          </div>
+          <Paginate2
+            paginatePrev={() => setPageNumber(pagenumber - 1)}
+            paginateNext={() => setPageNumber(pagenumber + 1)}
+            number={pagenumber + "/" + pagecount}
+          />
+          <CharacterList characters={visible} />;
+        </GridItem>
+      </Grid>
+    </>
   );
 };
 

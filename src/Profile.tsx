@@ -25,6 +25,9 @@ const Profile = () => {
       .get("/character/" + characterId)
       .then((res) => setCharacter(res.data));
   }, []);
+  useEffect(() => {
+    document.title = "Profile";
+  });
   return (
     <>
       <Center>
