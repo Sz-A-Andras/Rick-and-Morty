@@ -77,8 +77,20 @@ const Home = () => {
             ></CharacterFilterByName>
           </div>
           <Paginate2
-            paginatePrev={() => setPageNumber(pagenumber - 1)}
-            paginateNext={() => setPageNumber(pagenumber + 1)}
+            paginatePrev={() => {
+              if (pagenumber === 1) {
+                setPageNumber(pagenumber);
+              } else {
+                setPageNumber(pagenumber - 1);
+              }
+            }}
+            paginateNext={() => {
+              if (pagenumber === pagecount) {
+                setPageNumber(pagenumber);
+              } else {
+                setPageNumber(pagenumber + 1);
+              }
+            }}
             number={pagenumber + "/" + pagecount}
           />
           <Paginate3
