@@ -31,12 +31,12 @@ const Home = () => {
   if (selectedCharacterBySpecies !== "") {
     visible = currentRows.filter(
       (c) =>
-        c.name.includes(selectedCharacterByName) &&
+        c.name.toLowerCase().includes(selectedCharacterByName.toLowerCase()) &&
         c.species === selectedCharacterBySpecies
     );
   } else {
     visible = currentRows.filter((c) =>
-      c.name.includes(selectedCharacterByName)
+      c.name.toLowerCase().includes(selectedCharacterByName.toLowerCase())
     );
   }
 
